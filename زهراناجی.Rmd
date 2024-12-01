@@ -1,0 +1,112 @@
+---
+title: "project1"
+author: "Zahra Naji"
+date: "`r Sys.Date()`"
+output: html_document
+---
+```{r}
+
+
+#Answer1
+my.id<-20+82
+set.seed(102)
+my.id
+library(carData)
+data(Salaries)
+Salaries
+#install.packages("car")
+library(car)
+#sample_data<-Salaries[sample(1:nrow(Salaries),my.id),])
+yrs_service<-Salaries$yrs.service
+summary(Salaries$yrs.service)
+mean(Salaries$yrs.service) 
+median(Salaries$yrs.service)
+sd(Salaries$yrs.service)
+var(Salaries$yrs.service)
+range(Salaries$yrs.service)
+quantile(Salaries$yrs.service)
+quantile(Salaries$yrs.service,0.25)
+quantile(Salaries$yrs.service,0.5)
+quantile(Salaries$yrs.service,0.75)
+#چارک اول (Q1):نشان دهنده مقداری است که 25% داده ها کمتر از آن هستند
+#چارک دوم(Q2):نشان دهنده مقداری است که 50% داده ها کمتر آ هستند 
+#چارک سوم (Q3):نشان دهنده مقداری است که 75% داده ها کمتر از آن هستند
+#install.packages("e1071")
+library(e1071)
+skewness(Salaries$yrs.service)
+kurtosis(Salaries$yrs.service)
+#چولگی:اگر مقدار مثبت باشد،نشان دهنده چوله به راست (دم بلندتر در سمت راست)است و مقدار منفی نشان دهنده توزیعی چپ چوله است 
+#کشیدگی:اگر مقدار کشیدگی بیشتر از 3 باشد،داده ها دارای توزیع قله دارتر از نرمال هستند
+
+
+
+```
+
+```{r}
+
+
+#Answer2
+my.id<-20+82
+set.seed(my.id)
+my.id
+sample_data<-sample(Salaries$yrs.service,102)
+hist(Salaries$salary,main = "Histogram of salary",xlab = "salary",col ="pink" )
+boxplot(Salaries$salary~Salaries$rank,main="salary by rank",xlab = "rank",ylab="salary",col="brown")
+
+
+
+```
+
+```{r}
+
+
+#Answer3
+set.seed(123)
+random_numbers<-rnorm(100,mean=50,sd=10)
+divisible_by_6<-random_numbers[random_numbers%%6==0]
+
+
+```
+
+```{r}
+
+
+#Answer4
+my_function<-function(x){
+  n<-length(x)
+  return(n/sum(1/x))
+}
+result<-my_function(Salaries$salary)
+
+
+```
+
+```{r}
+
+
+#Answer5
+integrate(function(x)1+x^2,lower=0.5,upper=3)
+#install.packages("pracma")
+library(pracma)
+f<-function(x,y){
+  x+y^2-1
+  }
+result<-dblquad(f,0,1,3,5)
+print(result)
+
+
+```
+
+```{r}
+
+
+#Answer6
+A<-matrix(c(1,2,4,6,1,3,9,5,3),nrow=3,byrow="True")
+det(A)
+solve(A)
+#diag(A)<-C(0,0,0)
+A
+
+
+```
+
